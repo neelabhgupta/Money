@@ -130,5 +130,23 @@ describe Money do
     it "should raise an error when comparing with object of another type" do
       expect { Money.new(1, 1) <=> Object.new }.to raise_error
     end
+  end
+
+  context "Comparing" do
+    it "should return true if 2,3 is greater than 1,1" do
+      expect(Money.new(2, 3) > Money.new(1, 1)).to eq(true)
+    end
+
+    it "should return false if 1,1 is greater than 2,3" do
+      expect(Money.new(1, 1) > Money.new(2, 3)).to eq(false)
+    end
+
+    it "should return true if 1,1 is less than 4,5" do
+      expect(Money.new(1, 3) < Money.new(4, 5)).to eq(true)
+    end
+
+    it "should return false if 4,5 is less than 1,3" do
+      expect(Money.new(4, 5) < Money.new(1, 3)).to eq(false)
+    end
   end 
  end 
