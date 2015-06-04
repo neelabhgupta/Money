@@ -49,5 +49,10 @@ class Money
     pretty_string.strip
   end
 
+  def <=>(other_money)
+    raise ArgumentError.new("Cannot compare money with #{other_money.class}") if self.class != other_money.class
+    amount <=> other_money.amount
+  end
+
   alias_method :eql?, :==
 end

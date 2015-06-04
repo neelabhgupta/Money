@@ -119,5 +119,16 @@ describe Money do
     it "should throw an exception if input argument is negative" do
       expect { Money.new(-10,-10) }.to raise_error
     end
-  end  
+  end
+
+  context "Sorting" do
+    it "should sort an array of money values correctly" do
+      results = [Money.new(1, 1), Money.new(6, 8), Money.new(0,0)].sort
+      expect(results).to eq([Money.new(0,0), Money.new(1, 1), Money.new(6, 8)]) 
+    end
+
+    it "should raise an error when comparing with object of another type" do
+      expect { Money.new(1, 1) <=> Object.new }.to raise_error
+    end
+  end 
  end 
